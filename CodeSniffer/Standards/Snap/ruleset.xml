@@ -2,6 +2,8 @@
 <ruleset name="Snap">
  <description>The Snap Interactive coding standard.</description>
 
+ <!-- Use a modified PSR2 -->
+ <!-- Our goal is to eventually remove these modifications -->
  <rule ref="PSR2">
 	 <exclude name="Generic.Files.LineEndings"/>
 	 <exclude name="Generic.WhiteSpace.DisallowTabIndent"/>
@@ -25,5 +27,7 @@
    <property name="indent" value="1"/>
   </properties>
  </rule>
+
+ <!-- end modifications -->
 
 </ruleset>
