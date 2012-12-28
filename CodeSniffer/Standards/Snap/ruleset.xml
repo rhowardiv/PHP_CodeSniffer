@@ -2,42 +2,13 @@
 <ruleset name="Snap">
  <description>The Snap Interactive coding standard.</description>
 
- <!-- Use a modified PSR2 -->
- <!-- Our goal is to eventually remove these modifications -->
- <rule ref="PSR2">
-	 <exclude name="Generic.Files.LineEndings"/>
-	 <exclude name="Generic.WhiteSpace.DisallowTabIndent"/>
- </rule>
+ <rule ref="PSR2"/>
 
  <rule ref="PSR1.Classes.ClassDeclaration">
 	 <properties>
 		 <property name="enforce_namespaces" value="false"/>
 	 </properties>
  </rule>
-
- <rule ref="Generic.WhiteSpace.DisallowSpaceIndent"/>
- <rule ref="Generic.WhiteSpace.ScopeIndent">
-	 <properties>
-		 <property name="indent" value="1"/>
-	 </properties>
- </rule>
- <rule ref="PSR2.ControlStructures.SwitchDeclaration">
-	 <properties>
-		 <property name="indent" value="1"/>
-	 </properties>
- </rule>
- <rule ref="PEAR.Functions.FunctionCallSignature">
-  <properties>
-   <property name="indent" value="1"/>
-  </properties>
- </rule>
- <rule ref="Squiz.Functions.MultiLineFunctionDeclaration">
-  <properties>
-   <property name="indent" value="1"/>
-  </properties>
- </rule>
-
- <!-- end modifications -->
 
  <!-- Other nice things -->
  <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter"/>
