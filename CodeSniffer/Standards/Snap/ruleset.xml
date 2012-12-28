@@ -21,6 +21,11 @@
 		 <property name="indent" value="1"/>
 	 </properties>
  </rule>
+ <rule ref="PSR2.ControlStructures.SwitchDeclaration">
+	 <properties>
+		 <property name="indent" value="1"/>
+	 </properties>
+ </rule>
 
  <rule ref="PEAR.Functions.FunctionCallSignature">
   <properties>
