@@ -26,8 +26,12 @@
 		 <property name="indent" value="1"/>
 	 </properties>
  </rule>
-
  <rule ref="PEAR.Functions.FunctionCallSignature">
+  <properties>
+   <property name="indent" value="1"/>
+  </properties>
+ </rule>
+ <rule ref="Squiz.Functions.MultiLineFunctionDeclaration">
   <properties>
    <property name="indent" value="1"/>
   </properties>
