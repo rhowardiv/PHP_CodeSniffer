@@ -39,4 +39,28 @@
 
  <!-- end modifications -->
 
+ <!-- Other nice things -->
+ <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter"/>
+ <rule ref="Generic.Metrics.CyclomaticComplexity"/>
+ <rule ref="Generic.Metrics.NestingLevel"/>
+ <rule ref="Generic.Strings.UnnecessaryStringConcat">
+ <properties>
+  <property name="error" value="false"/>
+ </properties>
+ </rule>
+ <rule ref="Squiz.Arrays.ArrayBracketSpacing"/>
+ <rule ref="Squiz.Classes.LowercaseClassKeywords"/>
+ <rule ref="Squiz.Commenting.FunctionCommentThrowTag"/>
+ <rule ref="Squiz.Functions.FunctionDuplicateArgument"/>
+ <rule ref="Squiz.PHP.DisallowMultipleAssignments"/>
+ <rule ref="Squiz.PHP.DiscouragedFunctions"/>
+ <rule ref="Squiz.PHP.GlobalKeyword"/>
+ <rule ref="Squiz.PHP.InnerFunctions"/>
+ <rule ref="Squiz.PHP.LowercasePHPFunctions"/>
+ <rule ref="Squiz.PHP.NonExecutableCode"/>
+ <rule ref="Squiz.Scope.StaticThisUsage"/>
+ <rule ref="Squiz.WhiteSpace.CastSpacing"/>
+ <rule ref="Squiz.WhiteSpace.LogicalOperatorSpacing"/>
+ <rule ref="Squiz.WhiteSpace.SemicolonSpacing"/>
+
 </ruleset>
