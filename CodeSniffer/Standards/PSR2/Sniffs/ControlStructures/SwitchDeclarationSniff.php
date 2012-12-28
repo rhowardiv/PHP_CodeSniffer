@@ -28,6 +28,11 @@
 class PSR2_Sniffs_ControlStructures_SwitchDeclarationSniff implements PHP_CodeSniffer_Sniff
 {
 
+    /**
+     * Whitespace characters req'd per indent level
+     * @var int
+     */
+    public $indent = 4;
 
     /**
      * Returns an array of tokens this test wants to listen for.
@@ -63,7 +68,7 @@ class PSR2_Sniffs_ControlStructures_SwitchDeclarationSniff implements PHP_CodeSn
 
         $switch        = $tokens[$stackPtr];
         $nextCase      = $stackPtr;
-        $caseAlignment = ($switch['column'] + 4);
+        $caseAlignment = ($switch['column'] + $this->indent);
         $caseCount     = 0;
         $foundDefault  = false;
 
@@ -87,7 +92,7 @@ class PSR2_Sniffs_ControlStructures_SwitchDeclarationSniff implements PHP_CodeSn
             }
 
             if ($tokens[$nextCase]['column'] !== $caseAlignment) {
-                $error = strtoupper($type).' keyword must be indented 4 spaces from SWITCH keyword';
+                $error = strtoupper($type).' keyword must be indented from SWITCH keyword';
                 $phpcsFile->addError($error, $nextCase, $type.'Indent');
             }
 
@@ -123,7 +128,7 @@ class PSR2_Sniffs_ControlStructures_SwitchDeclarationSniff implements PHP_CodeSn
                 // Only need to check some things once, even if the
                 // closer is shared between multiple case statements, or even
                 // the default case.
-                if ($tokens[$nextCloser]['column'] !== ($caseAlignment + 4)) {
+                if ($tokens[$nextCloser]['column'] !== ($caseAlignment + $this->indent)) {
                     $error = 'Terminating statement must be indented to the same level as the CASE body';
                     $phpcsFile->addError($error, $nextCloser, 'BreakIndent');
                 }
