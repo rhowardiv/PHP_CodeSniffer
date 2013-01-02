@@ -78,12 +78,12 @@ class Squiz_Sniffs_Classes_ValidClassNameSniff implements PHP_CodeSniffer_Sniff
         $valid = PHP_CodeSniffer::isCamelCaps($name, true, true, false);
         if ($valid === false) {
             $type  = ucfirst($tokens[$stackPtr]['content']);
-            $error = '%s name "%s" is not in camel caps format';
+            $error = '%s name "%s" is not in camel caps format or uses underscores instead of namespacing';
             $data  = array(
                       $type,
                       $name,
                      );
-            $phpcsFile->addError($error, $stackPtr, 'NotCamelCaps', $data);
+            $phpcsFile->addWarning($error, $stackPtr, 'NotCamelCaps', $data);
         }
 
     }//end process()
