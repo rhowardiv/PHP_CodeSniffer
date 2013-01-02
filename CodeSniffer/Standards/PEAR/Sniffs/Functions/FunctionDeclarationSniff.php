@@ -28,6 +28,11 @@
 class PEAR_Sniffs_Functions_FunctionDeclarationSniff implements PHP_CodeSniffer_Sniff
 {
 
+    /**
+     * Whitespace characters req'd per indent level
+     * @var int
+     */
+    public $indent = 4;
 
     /**
      * Returns an array of tokens this test wants to listen for.
@@ -236,7 +241,7 @@ class PEAR_Sniffs_Functions_FunctionDeclarationSniff implements PHP_CodeSniffer_
             }//end if
         }//end if
 
-        // Each line between the parenthesis should be indented 4 spaces.
+        // Each line between the parenthesis should be indented.
         $openBracket  = $tokens[$stackPtr]['parenthesis_opener'];
         $lastLine     = $tokens[$openBracket]['line'];
         for ($i = ($openBracket + 1); $i < $closeBracket; $i++) {
@@ -249,7 +254,7 @@ class PEAR_Sniffs_Functions_FunctionDeclarationSniff implements PHP_CodeSniffer_
                     // as the function.
                     $expectedIndent = $functionIndent;
                 } else {
-                    $expectedIndent = ($functionIndent + 4);
+                    $expectedIndent = ($functionIndent + $this->indent);
                 }
 
                 // We changed lines, so this should be a whitespace indent token.
@@ -260,7 +265,7 @@ class PEAR_Sniffs_Functions_FunctionDeclarationSniff implements PHP_CodeSniffer_
                 }
 
                 if ($expectedIndent !== $foundIndent) {
-                    $error = 'Multi-line function declaration not indented correctly; expected %s spaces but found %s';
+                    $error = 'Multi-line function declaration not indented correctly; expected %s whitespace characters but found %s';
                     $data  = array(
                               $expectedIndent,
                               $foundIndent,
