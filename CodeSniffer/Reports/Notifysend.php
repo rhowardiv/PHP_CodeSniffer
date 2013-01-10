@@ -52,6 +52,13 @@ class PHP_CodeSniffer_Reports_Notifysend implements PHP_CodeSniffer_Report
      */
     protected $showOk = true;
 
+    /**
+     * Version of installed notify-send executable.
+     *
+     * @var string
+     */
+    protected $version = null;
+
 
     /**
      * Load configuration data.
@@ -74,6 +81,12 @@ class PHP_CodeSniffer_Reports_Notifysend implements PHP_CodeSniffer_Report
         if ($showOk !== null) {
             $this->showOk = (boolean) $showOk;
         }
+
+        $this->version = str_replace(
+            'notify-send ',
+            '',
+            exec($this->path . ' --version')
+        );
 
     }//end __construct()
 
@@ -156,12 +169,10 @@ class PHP_CodeSniffer_Reports_Notifysend implements PHP_CodeSniffer_Report
      */
     protected function notifyAllFine()
     {
-        exec(
-            $this->getBasicCommand()
-            . ' -i info'
-            . ' "PHP CodeSniffer: Ok"'
-            . ' "All fine"'
-        );
+        $cmd  = $this->getBasicCommand();
+        $cmd .= ' -i info';
+        $cmd .= ' "PHP CodeSniffer: Ok"';
+        $cmd .= ' "All fine"';
 
     }//end notifyAllFine()
 
@@ -175,12 +186,10 @@ class PHP_CodeSniffer_Reports_Notifysend implements PHP_CodeSniffer_Report
      */
     protected function notifyErrors($msg)
     {
-        exec(
-            $this->getBasicCommand()
-            . ' -i error'
-            . ' "PHP CodeSniffer: Error"'
-            . ' ' . escapeshellarg(trim($msg))
-        );
+        $cmd  = $this->getBasicCommand();
+        $cmd .= ' -i error';
+        $cmd .= ' "PHP CodeSniffer: Error"';
+        $cmd .= ' '.escapeshellarg(trim($msg));
 
     }//end notifyErrors()
 
@@ -192,10 +201,14 @@ class PHP_CodeSniffer_Reports_Notifysend implements PHP_CodeSniffer_Report
      */
     protected function getBasicCommand()
     {
-        return escapeshellcmd($this->path)
-            . ' --category dev.validate'
-            . ' -a phpcs'
-            . ' -t ' . (int) $this->timeout;
+        $cmd  = escapeshellcmd($this->path);
+        $cmd .= ' --category dev.validate';
+        $cmd .= ' -t '.(int) $this->timeout;
+        if (version_compare($this->version, '0.7.3', '>=') === true) {
+            $cmd .= ' -a phpcs';
+        }
+
+        return $cmd;
 
     }//end getBasicCommand()
 
