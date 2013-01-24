@@ -5,19 +5,23 @@
  <rule ref="PSR2"/>
 
  <rule ref="PSR1.Classes.ClassDeclaration">
-	 <properties>
-		 <property name="enforce_namespaces" value="false"/>
-	 </properties>
+  <properties>
+   <property name="enforce_namespaces" value="false"/>
+  </properties>
  </rule>
 
  <!-- Other nice things -->
  <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter"/>
- <rule ref="Generic.Metrics.CyclomaticComplexity"/>
+ <rule ref="Generic.Metrics.CyclomaticComplexity">
+  <properties>
+   <property name="absoluteComplexity" value="99"/>
+  </properties>
+ </rule>
  <rule ref="Generic.Metrics.NestingLevel"/>
  <rule ref="Generic.Strings.UnnecessaryStringConcat">
- <properties>
-  <property name="error" value="false"/>
- </properties>
+  <properties>
+   <property name="error" value="false"/>
+  </properties>
  </rule>
  <rule ref="Squiz.Arrays.ArrayBracketSpacing"/>
  <rule ref="Squiz.Classes.LowercaseClassKeywords"/>
