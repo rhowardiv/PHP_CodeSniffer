@@ -806,7 +806,11 @@ class PHP_CodeSniffer_File
         if (empty($data) === true) {
             $message = $error;
         } else {
-            $message = vsprintf($error, $data);
+            $message = str_replace(
+                array("\r", "\n"),
+                array('\r', '\n'),
+                vsprintf($error, $data)
+            );
         }
 
         if (isset($this->_errors[$lineNum]) === false) {
@@ -927,7 +931,11 @@ class PHP_CodeSniffer_File
         if (empty($data) === true) {
             $message = $warning;
         } else {
-            $message = vsprintf($warning, $data);
+            $message = str_replace(
+                array("\r", "\n"),
+                array('\r', '\n'),
+                vsprintf($warning, $data)
+            );
         }
 
         if (isset($this->_warnings[$lineNum]) === false) {
