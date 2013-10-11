@@ -10,6 +10,8 @@
   </properties>
  </rule>
 
+ <rule ref="Snap.WhiteSpace.StringOperatorSpacing"/>
+
  <!-- Other nice things -->
  <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter"/>
  <rule ref="Generic.Metrics.CyclomaticComplexity">
