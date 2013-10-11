@@ -9,7 +9,7 @@
  * @author    Mike Sherov <mike.sherov@gmail.com>
  * @link      http://pear.php.net/package/PHP_CodeSniffer
  */
-class Snap_Sniffs_WhiteSpace_StringOperatorSpacingSniff extends Squiz_Sniffs_WhiteSpace_LogicalOperatorSpacingSniff
+class Snap_Sniffs_WhiteSpace_StringOperatorSpacingSniff extends Squiz_Sniffs_WhiteSpace_OperatorSpacingSniff
 {
 
     /**
