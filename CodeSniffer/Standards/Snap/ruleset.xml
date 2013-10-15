@@ -10,8 +10,6 @@
   </properties>
  </rule>
 
- <rule ref="Snap.WhiteSpace.StringOperatorSpacing"/>
-
  <!-- Other nice things -->
  <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter"/>
  <rule ref="Generic.Metrics.CyclomaticComplexity">
@@ -38,7 +36,7 @@
  <rule ref="Squiz.Scope.StaticThisUsage"/>
  <rule ref="Squiz.WhiteSpace.CastSpacing"/>
  <rule ref="Squiz.WhiteSpace.LogicalOperatorSpacing"/>
- <rule ref="Squiz.WhiteSpace.OperatorSpacing"/>
+ <rule ref="Snap.WhiteSpace.OperatorSpacing"/>
  <rule ref="Squiz.WhiteSpace.SemicolonSpacing"/>
 
 </ruleset>
